@@ -39,8 +39,8 @@ const page = () => {
 
       router.push("/login");
     } catch (error: any) {
-      console.log("Signup Failed" + error);
-      toast.error(error.message);
+      console.log("Signup Failed : " + error.response.data.error);
+      toast.error(error.response.data.error);
     } finally {
       setLoading(false);
     }
