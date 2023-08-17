@@ -4,8 +4,7 @@ import React, { useEffect } from "react";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import { NextResponse } from "next/server";
-import { toast } from "react-hot-toast/headless";
-import { Toaster } from "react-hot-toast";
+import { Toaster, toast } from "react-hot-toast";
 import Image from "next/image";
 
 const page = () => {
@@ -50,7 +49,7 @@ const page = () => {
         <Toaster />
       </div>
       <div className="flex items-center justify-center w-full md:w-1/2">
-        <Image src="/cat.jpg" alt="Login Image" width={800} height={600} />
+        <Image src="/logo.png" alt="Login Image" width={300} height={300} />
       </div>
       <div className="flex flex-col items-center justify-center w-full md:w-1/4">
         <div className="w-full max-w-md space-y-8">
@@ -60,65 +59,58 @@ const page = () => {
               Please sign in to your account.
             </p>
           </div>
-          <form className="mt-8 space-y-6">
-            <div>
-              <label
-                htmlFor="username"
-                className="block font-bold text-gray-700"
-              >
-                Email address
-              </label>
-              <input
-                id="username"
-                type="text"
-                value={user.username}
-                //everything but username are kept unchanged
-                onChange={(e) => setUser({ ...user, username: e.target.value })}
-                placeholder="Enter your username"
-                className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
-                required
-              />
-            </div>
-            <div>
-              <label
-                htmlFor="password"
-                className="block font-bold text-gray-700"
-              >
-                Password
-              </label>
-              <input
-                id="password"
-                type="password"
-                value={user.password}
-                //everything but username are kept unchanged
-                onChange={(e) => setUser({ ...user, password: e.target.value })}
-                placeholder="Enter your password"
-                className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
-                required
-              />
-            </div>
-            <div>
-              <button
-                onClick={onLogin}
-                type="submit"
-                className="w-full px-4 py-3 font-bold text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
-              >
-                LogIn
-              </button>
-            </div>
-          </form>
-          <Link
-            href="/forgotpassword"
-            className=" p-2 border border-red-500 rounded-lg mb-4 focus:outline-none focus:border-gray-600 text-red-500"
-          >
-            Forgot password
-          </Link>
-          <Link
-            href="/register"
-            className=" p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
-          >
-            Register
-          </Link>
+          {/* <form className="mt-8 space-y-6">  */}
+          <div>
+            <label htmlFor="username" className="block font-bold text-gray-700">
+              Username
+            </label>
+            <input
+              id="username"
+              type="text"
+              value={user.username}
+              //everything but username are kept unchanged
+              onChange={(e) => setUser({ ...user, username: e.target.value })}
+              placeholder="Enter your username"
+              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+            />
+          </div>
+          <div>
+            <label htmlFor="password" className="block font-bold text-gray-700">
+              Password
+            </label>
+            <input
+              id="password"
+              type="password"
+              value={user.password}
+              //everything but username are kept unchanged
+              onChange={(e) => setUser({ ...user, password: e.target.value })}
+              placeholder="Enter your password"
+              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+            />
+          </div>
+          <div>
+            <button
+              onClick={onLogin}
+              className="w-full px-4 py-3 font-bold text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
+            >
+              LogIn
+            </button>
+          </div>
+          {/* </form>   */}
+          <div>
+            <Link
+              href="/forgotpassword"
+              className=" p-2 border border-red-500 rounded-lg  m-4 focus:outline-none focus:border-gray-600 text-red-500"
+            >
+              Forgot password
+            </Link>
+            <Link
+              href="/register"
+              className=" p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+            >
+              Register
+            </Link>
+          </div>
         </div>
       </div>
     </div>
