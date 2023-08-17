@@ -88,7 +88,7 @@ const page = () => {
         onClick={onSignup}
         className=" p-2  border border-grey-300 rounded-lg mb-4 focus:outline-none focus:border-grey-600"
       >
-        {buttonDisabled ? "no signup" : "signup"}
+        {buttonDisabled ? "no Register" : "Register"}
       </button>
       <Link
         href="/login"
