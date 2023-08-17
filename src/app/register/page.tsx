@@ -33,7 +33,7 @@ const page = () => {
     try {
       setLoading(true);
       toast("Signing you Up!");
-      const response = await axios.post("/api/users/signup", user);
+      const response = await axios.post("/api/users/register", user);
       console.log("Signup Success " + response.data);
       toast.success("Signup Success!");
 
