@@ -47,7 +47,8 @@ export const sendEmail = async ({ email, emailType, userId }: any) => {
         emailType === "VERIFY" ? "verify your email" : "reset your password",
       html: `<p>Click <a href=${
         process.env.DOMAIN
-      }/verifyemail?token=${hashedToken}>here</a> to ${
+      }/${emailType === "VERIFY" ? "verifyemail" : "resetpassword"
+      }?token=${hashedToken}>here</a> to ${
         emailType === "VERIFY" ? "verify your email" : "reset your password"
       }</p>`,
     };

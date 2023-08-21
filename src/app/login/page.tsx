@@ -32,7 +32,7 @@ const page = () => {
       toast("Signing you In!");
       const response = await axios.post("/api/users/login", user);
       console.log("Login Success " + response.data);
-      toast.success("Login Success!");
+      //toast.success("Login Success!");
       //router.push("/profile/" + user.username);
       router.push("/dashboard");
     } catch (error: any) {
