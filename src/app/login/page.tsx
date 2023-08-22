@@ -48,8 +48,8 @@ const page = () => {
       <div>
         <Toaster />
       </div>
-      <div className="flex items-center justify-center w-full md:w-1/2">
-        <Image src="/logo.png" alt="Login Image" width={300} height={300} />
+      <div className="flex items-center justify-center w-full md:w-6/7">
+        <Image src="/logo.png" alt="Login Image" width={400} height={400} />
       </div>
       <div className="flex flex-col items-center justify-center w-full md:w-1/4">
         <div className="w-full max-w-md space-y-8 text-center m-2">
@@ -61,12 +61,12 @@ const page = () => {
           </div>
           {/* <form className="mt-8 space-y-6">  */}
           <div>
-            <label
+            {/* <label
               htmlFor="email"
               className="block font-bold text-gray-700  text-left ml-5 w-4/5"
             >
               Email
-            </label>
+            </label> */}
             <input
               id="email"
               type="text"
@@ -74,16 +74,16 @@ const page = () => {
               //everything but email are kept unchanged
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               placeholder="Enter your email"
-              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
+              className="border-2 border-blue-300 px-4 py-3 mt-1 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
             />
           </div>
           <div>
-            <label
+            {/* <label
               htmlFor="password"
               className="block font-bold text-gray-700 text-left ml-5 w-4/5"
             >
               Password
-            </label>
+            </label> */}
             <input
               id="password"
               type="password"
@@ -91,11 +91,11 @@ const page = () => {
               //everything but password are kept unchanged
               onChange={(e) => setUser({ ...user, password: e.target.value })}
               placeholder="Enter your password"
-              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
+              className="border-2 border-blue-300 px-4 py-3 mt-1 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
             />
           </div>
           <div>
-            <div className="text-base">
+            <div className="text-base mb-4">
               Can't Remember?
               <Link
                 href="/forgotpassword"
@@ -106,7 +106,7 @@ const page = () => {
             </div>
             <button
               onClick={onLogin}
-              className="w-full px-4 py-3 font-bold w-4/5 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
+              className="px-4 py-3 font-bold w-4/5 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
             >
               LogIn
             </button>
@@ -116,7 +116,7 @@ const page = () => {
             Don't have an account?
             <Link
               href="/register"
-              className="max-h-0.5 m-2 focus:outline-none focus:border-blue-600 text-blue-500"
+              className="max-h-0.5 focus:outline-none focus:border-blue-600 text-blue-500"
             >
               Register
             </Link>
