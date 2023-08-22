@@ -52,7 +52,7 @@ const page = () => {
         <Image src="/logo.png" alt="Login Image" width={300} height={300} />
       </div>
       <div className="flex flex-col items-center justify-center w-full md:w-1/4">
-        <div className="w-full max-w-md space-y-8">
+        <div className="w-full max-w-md space-y-8 text-center m-2">
           <div>
             <h1 className="text-2xl font-bold">Welcome back!</h1>
             <p className="mt-2 text-gray-600">
@@ -61,7 +61,10 @@ const page = () => {
           </div>
           {/* <form className="mt-8 space-y-6">  */}
           <div>
-            <label htmlFor="email" className="block font-bold text-gray-700">
+            <label
+              htmlFor="email"
+              className="block font-bold text-gray-700  text-left ml-5 w-4/5"
+            >
               Email
             </label>
             <input
@@ -71,11 +74,14 @@ const page = () => {
               //everything but email are kept unchanged
               onChange={(e) => setUser({ ...user, email: e.target.value })}
               placeholder="Enter your email"
-              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
             />
           </div>
           <div>
-            <label htmlFor="password" className="block font-bold text-gray-700">
+            <label
+              htmlFor="password"
+              className="block font-bold text-gray-700 text-left ml-5 w-4/5"
+            >
               Password
             </label>
             <input
@@ -85,28 +91,32 @@ const page = () => {
               //everything but password are kept unchanged
               onChange={(e) => setUser({ ...user, password: e.target.value })}
               placeholder="Enter your password"
-              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
+              className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200 w-4/5"
             />
           </div>
           <div>
+            <div className="text-base">
+              Can't Remember?
+              <Link
+                href="/forgotpassword"
+                className="max-h-0.5  m-2 focus:outline-none focus:border-gray-600 text-blue-500"
+              >
+                Forgot password
+              </Link>
+            </div>
             <button
               onClick={onLogin}
-              className="w-full px-4 py-3 font-bold text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
+              className="w-full px-4 py-3 font-bold w-4/5 text-white bg-indigo-500 rounded-md hover:bg-indigo-600 focus:outline-none focus:shadow-outline-indigo focus:border-indigo-700"
             >
               LogIn
             </button>
           </div>
           {/* </form>   */}
-          <div>
-            <Link
-              href="/forgotpassword"
-              className=" p-2 border border-red-500 rounded-lg  m-4 focus:outline-none focus:border-gray-600 text-red-500"
-            >
-              Forgot password
-            </Link>
+          <div className="text-base text-center">
+            Don't have an account?
             <Link
               href="/register"
-              className=" p-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:border-gray-600"
+              className="max-h-0.5 m-2 focus:outline-none focus:border-blue-600 text-blue-500"
             >
               Register
             </Link>
