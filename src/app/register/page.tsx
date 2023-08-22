@@ -10,7 +10,7 @@ const page = () => {
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-    username: "",
+    displayName: "",
   });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
@@ -21,7 +21,7 @@ const page = () => {
     if (
       user.email.length > 0 &&
       user.password.length > 0 &&
-      user.username.length > 0
+      user.displayName.length > 0
     ) {
       setButtonDisabled(false);
     } else {
@@ -53,15 +53,15 @@ const page = () => {
       </div>
       <h1>{loading ? "Processing" : "Signup"}</h1>
       <hr />
-      <label htmlFor="username">username</label>
+      <label htmlFor="displayName">Display Name</label>
       <input
         className="text-black p-2 border border-grey-300 rounded-lg mb-4 focus:outline-none focus:border-grey-600"
-        id="username"
+        id="diaplayName"
         type="text"
-        value={user.username}
-        //everything but username are kept unchanged
-        onChange={(e) => setUser({ ...user, username: e.target.value })}
-        placeholder="username"
+        value={user.displayName}
+        //everything but displayName are kept unchanged
+        onChange={(e) => setUser({ ...user, displayName: e.target.value })}
+        placeholder="Display Name"
       />
       <label htmlFor="email">email</label>
       <input
@@ -69,7 +69,7 @@ const page = () => {
         id="email"
         type="email"
         value={user.email}
-        //everything but username are kept unchanged
+        //everything but email are kept unchanged
         onChange={(e) => setUser({ ...user, email: e.target.value })}
         placeholder="email"
       />
@@ -79,7 +79,7 @@ const page = () => {
         id="password"
         type="password"
         value={user.password}
-        //everything but username are kept unchanged
+        //everything but password are kept unchanged
         onChange={(e) => setUser({ ...user, password: e.target.value })}
         placeholder="password"
       />

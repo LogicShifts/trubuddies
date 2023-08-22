@@ -9,11 +9,11 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    const { username, password } = reqBody;
+    const { email, password } = reqBody;
     console.log(reqBody);
 
     //check if user exists
-    const user = await User.findOne({ username });
+    const user = await User.findOne({ email });
     if (!user) {
       NextResponse.json({ error: "User does not exist" }, { status: 400 });
     }
@@ -29,7 +29,7 @@ export async function POST(request: NextRequest) {
     //create token data
     const tokenData = {
       id: user._id,
-      username: user.username,
+      userId: user.userId,
       email: user.email,
     };
 

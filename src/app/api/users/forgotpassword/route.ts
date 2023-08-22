@@ -24,7 +24,7 @@ export async function POST(request: NextRequest) {
 
 
      //send verification email
-     await sendEmail({ email, emailType: "RESET", userId: user._id });
+     await sendEmail({ email, emailType: "RESET", id: user._id });
 
 
 

@@ -12,14 +12,14 @@ const page = () => {
   const [user, setUser] = React.useState({
     email: "",
     password: "",
-    username: "",
+    userId: "",
   });
 
   const [buttonDisabled, setButtonDisabled] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
 
   useEffect(() => {
-    if (user.username.length > 0 && user.password.length > 0) {
+    if (user.email.length > 0 && user.password.length > 0) {
       setButtonDisabled(false);
     } else {
       setButtonDisabled(true);
@@ -33,7 +33,7 @@ const page = () => {
       const response = await axios.post("/api/users/login", user);
       console.log("Login Success " + response.data);
       //toast.success("Login Success!");
-      //router.push("/profile/" + user.username);
+      //router.push("/profile/" + user.userId);
       router.push("/dashboard");
     } catch (error: any) {
       console.log("Login Error", error);
@@ -61,16 +61,16 @@ const page = () => {
           </div>
           {/* <form className="mt-8 space-y-6">  */}
           <div>
-            <label htmlFor="username" className="block font-bold text-gray-700">
-              Username
+            <label htmlFor="email" className="block font-bold text-gray-700">
+              Email
             </label>
             <input
-              id="username"
+              id="email"
               type="text"
-              value={user.username}
-              //everything but username are kept unchanged
-              onChange={(e) => setUser({ ...user, username: e.target.value })}
-              placeholder="Enter your username"
+              value={user.email}
+              //everything but email are kept unchanged
+              onChange={(e) => setUser({ ...user, email: e.target.value })}
+              placeholder="Enter your email"
               className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"
             />
           </div>
@@ -82,7 +82,7 @@ const page = () => {
               id="password"
               type="password"
               value={user.password}
-              //everything but username are kept unchanged
+              //everything but password are kept unchanged
               onChange={(e) => setUser({ ...user, password: e.target.value })}
               placeholder="Enter your password"
               className="w-full px-4 py-3 mt-1 border-gray-300 rounded-md focus:border-indigo-500 focus:ring focus:ring-indigo-200"

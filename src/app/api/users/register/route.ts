@@ -10,7 +10,7 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
-    const { username, email, password } = reqBody;
+    const { displayName, email, password } = reqBody;
     console.log(reqBody);
 
     //check user already exists
@@ -27,15 +27,24 @@ export async function POST(request: NextRequest) {
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
 
+
+     // Find the highest existing user ID
+     const highestUserId = await User.findOne()
+     .sort("-userId")
+     .select("userId");
+
+   // Calculate the next available unique user ID
+   const nextUserId = highestUserId ? highestUserId.userId + 1 : 1000;
+
     //create user
-    const newUser = new User({ username, email, password: hashedPassword });
+    const newUser = new User({ userId: nextUserId, email, displayName, password: hashedPassword });
 
     //saving user in the database
     const savedUser = await newUser.save();
     console.log(savedUser);
 
     //send verification email
-    await sendEmail({ email, emailType: "VERIFY", userId: savedUser._id });
+    await sendEmail({ email, emailType: "VERIFY", id: savedUser._id });
 
     //return success response
     return NextResponse.json({

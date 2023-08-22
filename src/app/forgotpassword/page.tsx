@@ -72,7 +72,7 @@ export default function ForgotPassword() {
             id="email"
             name="email"
             value={user.email}
-            //everything but username are kept unchanged
+            //everything but email are kept unchanged
             onChange={(e) => setUser({ ...user, email: e.target.value })}
             className="w-full border border-gray-300 rounded px-3 py-2 focus:outline-none focus:border-blue-500"
           />

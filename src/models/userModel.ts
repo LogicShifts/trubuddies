@@ -1,11 +1,16 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-	username: {
-		type: String,
-		required: [true, "Please provide a username"],
+	userId: {
+		type: Number, 
+		required: [true, "userId must be provided"],
 		unique: true,
 	},
+	displayName: {
+		type: String,
+		required: [true, "Please provide a display name"],
+	},
+	
 	email: {
 		type: String,
 		required: [true, "Please provide an email"],
@@ -15,7 +20,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Please provide a password"],
 	},
-	roles: [{ type: mongoose.Schema.Types.ObjectId, ref: "Role" }],
+	role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
 	profilePhoto: String,
 	firstName: String,
 	lastName: String,

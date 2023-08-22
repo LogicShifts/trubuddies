@@ -24,7 +24,7 @@ export default function UserProfile({ params }: any) {
   const getUserDetails = async () => {
     const res = await axios.get("/api/users/me");
     console.log(res.data);
-    setData(res.data.data.username);
+    setData(res.data.data.userId);
   };
 
   return (
