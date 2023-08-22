@@ -36,14 +36,14 @@ const userSchema = new mongoose.Schema({
 	isVerified: { type: Boolean, default: false }, // New field
 	forgotPasswordToken: String, // New field
 	forgotPasswordTokenExpiry: Date, // New field
-	verifyToken: String, // New field
-	verifyTokenExpiry: Date, // New field
+	emailVerifyToken: String, // New field
+	emailVerifyTokenExpiry: Date, // New field
 	createdAt: { type: Date, default: Date.now },
 	updatedAt: Date,
 	isActive: { type: Boolean, default: true },
 });
 
 //const User = mongoose.model('User', userSchema);
-const User = mongoose.models.users || mongoose.model("users", userSchema);
+const User = mongoose.models.User || mongoose.model("User", userSchema);
 
 export default User;
