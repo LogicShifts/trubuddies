@@ -284,6 +284,7 @@ label .hamburger:before {
 }
 .blogs {
   transform: translateY(-180px);
+  margin-left: 5%;
 }
 .blogs h1 {
   color: #1052ff;
@@ -298,7 +299,7 @@ label .hamburger:before {
   display: flex;
   flex-direction: row;
   background-color: #cddbff;
-  border-radius: 20px;
+  border-radius: 80px 20px 20px 20px;
 }
 .blog-left {
   width: 40%;
@@ -306,6 +307,7 @@ label .hamburger:before {
   background-color: #1052ff;
   border-radius: 20px 0px 0px 20px;
   transform: skewX(-20deg);
+  
 }
 .blog-left::before {
   content: "";
@@ -468,4 +470,49 @@ label .hamburger:before {
 }
 footer {
   height: 180px;
+}
+.Article-padding{
+  padding-top: 100px;
+  margin-left: 5%;
+}
+.blogs1 {
+  padding-bottom: 200px;
+}
+.blogs1 h1 {
+  color: #1052ff;
+  text-align: center;
+}
+
+.blog1 {
+  width: 90%;
+  margin: auto;
+  height: 150px;
+  margin-bottom: 40px;
+  display: flex;
+  flex-direction: row;
+  background-color: #cddbff;
+  border-radius: 80px 20px 20px 20px;
+}
+.blog-left1 {
+  width: 40%;
+  height: 100%;
+  background-color: #1052ff;
+  border-radius: 20px 0px 0px 20px;
+  transform: skewX(-20deg);
+   /* margin-left: 5%; */
+}
+.blog-left1::before {
+  content: "";
+  position: absolute;
+  transform: skewX(-20deg);
+  background-color: #1052ff;
+}
+
+.blogbutton1 {
+  padding: 10px;
+  background-color: #1052ff;
+  color: #fff;
+  border-radius: 20px;
+  font-size: 20px;
+  margin-bottom: 20px;
 }
