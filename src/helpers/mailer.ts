@@ -10,8 +10,8 @@ export const sendEmail = async ({ email, emailType, id }: any) => {
       await User.findByIdAndUpdate(
         id,
         {
-          verifyToken: hashedToken,
-          verifyTokenExpiry: Date.now() + 3600000,
+          emailVerifyToken: hashedToken,
+          emailVerifyTokenExpiry: Date.now() + 3600000,
         }
         //   {
         //     new: true,
