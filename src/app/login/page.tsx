@@ -51,7 +51,7 @@ const page = () => {
       <div className="flex items-center justify-center w-full md:w-6/7">
         <Image src="/logo.png" alt="Login Image" width={400} height={400} />
       </div>
-      <div className="flex flex-col items-center justify-center w-full md:w-1/4">
+      <div className="flex flex-col items-center justify-center w-full md:w-4/5">
         <div className="w-full max-w-md space-y-8 text-center m-2">
           <div>
             <h1 className="text-2xl font-bold">Welcome back!</h1>
@@ -63,7 +63,7 @@ const page = () => {
           <div>
             {/* <label
               htmlFor="email"
-              className="block font-bold text-gray-700  text-left ml-5 w-4/5"
+              className="block font-bold text-gray-700  zztext-left ml-5 w-4/5"
             >
               Email
             </label> */}
