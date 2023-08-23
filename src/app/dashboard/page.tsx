@@ -58,6 +58,21 @@ export default function UserProfile({ params }: any) {
           Get User Details
         </button>
       </div>
+      <div className="bg-gray-100 min-h-screen p-8">
+        <div className="max-w-md mx-auto bg-white rounded p-8 shadow-lg">
+          <h1 className="text-2xl font-semibold mb-4">Profile</h1>
+          {/* Add your profile information here */}
+          <div className="mb-4">
+            <label className="text-gray-600">Name:</label>
+            <p className="text-gray-900">John Doe</p>
+          </div>
+          <div className="mb-4">
+            <label className="text-gray-600">Email:</label>
+            <p className="text-gray-900">johndoe@example.com</p>
+          </div>
+          {/* Add more profile information as needed */}
+        </div>
+      </div>
     </>
   );
 }
