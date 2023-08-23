@@ -6,25 +6,45 @@ import Footer from "@/components/footer";
 import Header from "@/components/navbar";
 import ArticleSection from "@/section/ArticleSection";
 import axios from "axios";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import Article from "@/components/article";
+
+interface ArticleData {
+  _id: string;
+  title: string;
+  description: string;
+  // Add other properties as needed
+}
 
 export default function Articles() {
 
-  const [articles,setArticles] = useState(null);
+  const [articles,setArticles] = useState([]);
 
-  const getAllArticles = async () => {
-    const articles = await axios.get('/api/articles');
-    setArticles(articles.data);
-  };
 
-  getAllArticles();
 
-  console.log(articles);
+  useEffect(() => {
+    async function fetchArticles() {
+      try {
+        const response = await axios.get('/api/articles');
+        console.log(response.data.data.length);
+        setArticles(response.data.data);
+      } catch (error) {
+        console.error('Error fetching articles:', error);
+      }
+    }
+  
+    fetchArticles();
+  }, []);
+
+  
   
   return (
       <main>
         <Header/>
-        <ArticleSection/>
+       <ArticleSection/>
+      
+  
+
         <Footer/>
       
         
