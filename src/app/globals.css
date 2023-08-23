@@ -473,7 +473,7 @@ label .hamburger:before {
 footer {
   height: 180px;
 }
-.Article-padding{
+/* .Article-padding{
   padding-top: 100px;
   margin-left: 5%;
 }
@@ -501,7 +501,7 @@ footer {
   background-color: #1052ff;
   border-radius: 20px 0px 0px 20px;
   transform: skewX(-20deg);
-   /* margin-left: 5%; */
+  
 }
 .blog-left1::before {
   content: "";
@@ -524,4 +524,4 @@ footer {
   'wght' 400,
   'GRAD' 0,
   'opsz' 48
-}
+} */

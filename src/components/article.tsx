@@ -1,31 +1,13 @@
-export default function Article() {
+import React from 'react'
+
+const Article = () => {
     return (
-       <main>
-            <div className="Article-padding">
-                <div className="blogs1">
-                    <h1>Learn & Get Inspired</h1>
-                    <div className="blog1">
-                        <div className="blog-left1"></div>
-                    </div>
-                    <div className="blog1">
-                        <div className="blog-left1"></div>
-                    </div>
-                    <div className="blog1">
-                        <div className="blog-left1"></div>
-                    </div>
-                    <div className="blog1">
-                        <div className="blog-left1"></div>
-                    </div>
-                    <div
-                        style={{
-                            display: "flex",
-                            justifyContent: "center",
-                        }}
-                    >
-                        <button className="blogbutton1">View more</button>
-                    </div>
-                </div>
+        <div>
+            <div className=" mx-[5%] h-[80px] rounded-[12px] mb-[10px] flex flex-row bg-indigo-200">
+                <div className="w-2/5 h-full rounded-l-lg bg-blue-600"></div>
             </div>
-            </main>
-    );
+        </div>
+    )
 }
+
+export default Article
