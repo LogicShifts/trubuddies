@@ -11,24 +11,38 @@ import { useEffect, useState } from "react";
 
 
 export default function ChatPage() {
-  const [isMobile,setIsMobile] = useState(window.innerWidth<768);
+
+  const [isMobile,setIsMobile] = useState(true);
   const [toogle,setToogle]=useState(false);
 
 
   const [name,setName] = useState("")
 
-  const handleResize = () => {
-    setIsMobile(window.innerWidth<768);
-    console.log(isMobile)
-  };
-
+  // const handleResize = () => {
+  //   setIsMobile(window.innerWidth<768);
+  //   console.log(isMobile)
+  // };
   useEffect(() => {
-    window.addEventListener('resize', handleResize);
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+
+    handleResize(); // Set initial value
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      window.removeEventListener('resize', handleResize);
+      window.removeEventListener("resize", handleResize);
     };
-  }, [isMobile]);
+  }, []);
+
+  // useEffect(() => {
+  //   window.addEventListener('resize', handleResize);
+
+  //   return () => {
+  //     window.removeEventListener('resize', handleResize);
+  //   };
+  // }, [isMobile]);
 
   if( isMobile ){
     return (

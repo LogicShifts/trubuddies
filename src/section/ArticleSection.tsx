@@ -1,12 +1,15 @@
 import Article from "@/components/article";
 
-export default function ArticleSection({  }) {
+export default function ArticleSection({ articles }: { articles: Array<{ _id: string, title: string, description: string }> }) {
     return (
         <main>
             <div className="pt-24">
                 <div className="pb-48">
                     <h1 className="text-blue-600 text-center">Learn & Get Inspired</h1>
-                    <Article/>
+                    {articles.map((article: any) => (
+         <Article key={article._id} title={article.title} description={article.description} />
+       ))}
+
                     <div className="justify-center text-center"
                     // style={{
                     //     display: "flex",

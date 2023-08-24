@@ -41,10 +41,12 @@ export default function Articles() {
   return (
       <main>
         <Header/>
-       <ArticleSection/>
+       {/* <ArticleSection/> */}
       
-  
+        <ArticleSection articles={articles}/> 
 
+     
+       
         <Footer/>
       
         
