@@ -42,7 +42,7 @@ export default function Articles() {
       <main>
         <Header/>
        {/* <ArticleSection/> */}
-        <div className="pb-[150px] pt-[10px]"><ArticleSection articles={articles}/> </div>
+        <div className="mb-16 mt-2 pb-[150px] pt-[10px]"><ArticleSection articles={articles}/> </div>
         
 
      
