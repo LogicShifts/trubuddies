@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useState, useEffect } from "react";
 import Header from "@/components/navbar";
+import FooterSecondary from "@/components/footer/footer2";
 
 export default function UserProfile({ params }: any) {
   const router = useRouter();
@@ -218,6 +219,7 @@ export default function UserProfile({ params }: any) {
           </div>
         </div>
       </section>
+      <FooterSecondary />
     </>
   );
 }

@@ -1,8 +1,8 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import Hero from "@/section/hero";
-import Footer from "@/components/footer";
+import Footer from "@/components/footer/footer";
 import Header from "@/components/navbar";
 import ArticleSection from "@/section/ArticleSection";
 import axios from "axios";
@@ -17,40 +17,31 @@ interface ArticleData {
 }
 
 export default function Articles() {
-
-  const [articles,setArticles] = useState([]);
-
-
+  const [articles, setArticles] = useState([]);
 
   useEffect(() => {
     async function fetchArticles() {
       try {
-        const response = await axios.get('/api/articles');
+        const response = await axios.get("/api/articles");
         console.log(response.data.data.length);
         setArticles(response.data.data);
       } catch (error) {
-        console.error('Error fetching articles:', error);
+        console.error("Error fetching articles:", error);
       }
     }
-  
+
     fetchArticles();
   }, []);
 
-  
-  
   return (
-      <main>
-        <Header/>
-       {/* <ArticleSection/> */}
-        <div className="mb-16 mt-2 pb-[150px] pt-[10px]"><ArticleSection articles={articles}/> </div>
-        
+    <main>
+      <Header />
+      {/* <ArticleSection/> */}
+      <div className="mb-16 mt-2 pb-[150px] pt-[10px]">
+        <ArticleSection articles={articles} />{" "}
+      </div>
 
-     
-       
-        <Footer/>
-      
-        
-      </main>
-    
+      <Footer />
+    </main>
   );
 }
