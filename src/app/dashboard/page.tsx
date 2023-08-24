@@ -7,7 +7,9 @@ import { useState, useEffect } from "react";
 
 export default function UserProfile({ params }: any) {
   const router = useRouter();
-  const [data, setData] = useState(null);
+  const [data, setData] = useState(
+    {} as { displayName?: string; email?: string }
+  );
   useEffect(() => {
     const authUser = getUserDetails();
 
@@ -135,10 +137,6 @@ export default function UserProfile({ params }: any) {
             <div className="bg-white p-4 shadow-lg rounded-lg">GDGB</div>
             <div className="bg-white p-4 shadow-lg rounded-lg">GDG</div>
             <div className="bg-white p-4 shadow-lg rounded-lg">GDGB</div>
-            <button
-              onClick={getUserDetails}
-              className="px-4 py-2 rounded  bg-green-800 hover:bg-green-900 text-white"
-            ></button>
           </div>
         </div>
       </div>
