@@ -42,8 +42,8 @@ export default function Articles() {
       <main>
         <Header/>
        {/* <ArticleSection/> */}
-      
-        <ArticleSection articles={articles}/> 
+        <div className="pb-[150px] pt-[10px]"><ArticleSection articles={articles}/> </div>
+        
 
      
        
