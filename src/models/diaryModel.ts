@@ -10,6 +10,6 @@ const diarySchema = new mongoose.Schema({
   updatedAt: Date,
 });
 
-const Diary = mongoose.models.Diary || mongoose.model("Diary", diarySchema);
+const DailyMood = mongoose.models.DailyMood || mongoose.model("DailyMood", diarySchema);
 
-export default Diary;
+export default DailyMood;
