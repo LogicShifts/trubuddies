@@ -20,7 +20,7 @@ const userSchema = new mongoose.Schema({
 		type: String,
 		required: [true, "Please provide a password"],
 	},
-	role: { type: mongoose.Schema.Types.ObjectId, ref: "Role" },
+	role: { type: mongoose.Schema.Types.ObjectId, ref: "UserRole" },
 	profilePhoto: String,
 	firstName: String,
 	lastName: String,
