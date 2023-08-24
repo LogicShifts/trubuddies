@@ -2,8 +2,8 @@ import Article from "@/components/article";
 
 export default function ArticleSection({ articles }: { articles: Array<{ _id: string, title: string, description: string }> }) {
     return (
-        <main>
-            <div className="pt-24">
+        <main className="mb-[100px]">
+            <div className="pt-24 mb-[1000px]">
                 <div className="pb-48">
                     <h1 className="text-blue-600 text-center">Learn & Get Inspired</h1>
                     {articles.map((article: any) => (
