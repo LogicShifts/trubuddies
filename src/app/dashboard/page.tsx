@@ -79,14 +79,14 @@ export default function UserProfile({ params }: any) {
                 src="./next.svg"
                 alt="Profile Picture"
               />
-              <div className="">
+              <div className="flex justify-center">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   fill="none"
                   viewBox="0 0 24 24"
                   strokeWidth={1.5}
                   stroke="red"
-                  className="w-7 h-7"
+                  className="w-7 h-7 align-left"
                   onClick={logout}
                 >
                   <path
@@ -114,23 +114,23 @@ export default function UserProfile({ params }: any) {
                   />
                 </svg>
               </div>
-              <p className="text-sky-600">{data?.email}</p>
+              <p className="text-sky-600 text-xs">{data?.email}</p>
+              <h1 className="text-xl text-sky-500 font-bold mt-4">
+                {data?.displayName}
+              </h1>
+              <p className="text-sky-600 text-xs">{data?.email}</p>
+              <h1 className="text-xl text-sky-500 font-bold mt-4">
+                {data?.displayName}
+              </h1>
+              <p className="text-sky-600 text-xs">{data?.email}</p>
+              <h1 className="text-xl text-sky-500 font-bold mt-4">
+                {data?.displayName}
+              </h1>
+              <p className="text-sky-600 text-xs">{data?.email}</p>
               <h1 className="text-2xl text-sky-500 font-bold mt-4">
                 {data?.displayName}
               </h1>
-              <p className="text-sky-600">{data?.email}</p>
-              <h1 className="text-2xl text-sky-500 font-bold mt-4">
-                {data?.displayName}
-              </h1>
-              <p className="text-sky-600">{data?.email}</p>
-              <h1 className="text-2xl text-sky-500 font-bold mt-4">
-                {data?.displayName}
-              </h1>
-              <p className="text-sky-600">{data?.email}</p>
-              <h1 className="text-2xl text-sky-500 font-bold mt-4">
-                {data?.displayName}
-              </h1>
-              <p className="text-sky-600">{data?.email}</p>
+              <p className="text-sky-600 text-xs">{data?.email}</p>
             </div>
           </div>
           <div className="lg:w-1/2">
