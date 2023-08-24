@@ -32,10 +32,11 @@ export async function POST(request: NextRequest) {
       userId: user.userId,
       email: user.email,
     };
-
+    //token expire timw
+    const expiresIn = 86400; // 1 day
     //create token
     const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET!, {
-      expiresIn: "1h",
+      expiresIn: expiresIn,
     });
 
     //creating response
@@ -49,6 +50,7 @@ export async function POST(request: NextRequest) {
     //setting cookies
     response.cookies.set("token", token, {
       httpOnly: true,
+      expires: new Date(Date.now() + expiresIn * 1000), // Set the cookie's expiration time
     });
 
     //sending response

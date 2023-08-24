@@ -35,14 +35,15 @@ export async function GET() {
 
 export async function POST(request: NextRequest) {
   try {
+  
     // console.log(author);
     const reqBody = await request.json();
-    const { title, description, publishedOn, url, tags } = reqBody;
+    const { title, description, url, tags } = reqBody;
     console.log(reqBody);
     const author = getDataFromToken( request);
     console.log('author = '+author);
     // const articles = await Article.find();
-
+    const publishedOn = Date.now();
     // console.log(articles);
 
     const result = await Article.create({
