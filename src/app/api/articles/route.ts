@@ -13,7 +13,7 @@ export async function GET(request : NextRequest) {
     const queryParam  = request.nextUrl.searchParams;
     const { offset = 0, limit = 50 } = { offset: queryParam.get('offset'), limit: queryParam.get('limit') };
     const articles = await Article.find().skip(Number(offset)).limit(Number(limit));
-    console.log(offset+" "+limit);
+    //console.log(offset+" "+limit);
 
 
     // for (const article of articles) {
