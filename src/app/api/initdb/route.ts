@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await User.find();
     await BuddyProfile.find();
-    await TruBuddyProfile.find();
+    //await TruBuddyProfile.find();
     await UserRole.find();
     await UserRole.find();
     await Mood.find();
