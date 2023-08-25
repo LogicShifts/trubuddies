@@ -16,7 +16,24 @@ export async function POST(request: NextRequest){
         const reqBody = await request.json();
 
         const {buddyId, truBuddyId} = reqBody;
-
+        // const participants= {
+        //   buddy: buddyId,
+        //   truBuddy: truBuddyId };
+        //   console.log(participants)
+      // const buddyId="64e4f5f27799164b8ed260b2";
+      // const truBuddyId= "64e4f7340782fcdd94244dfc";
+          const existingChat = await Chat.findOne({
+            "participants.buddy": buddyId,
+            "participants.truBuddy": truBuddyId
+          }).exec();
+       //console.log(existingChat);
+        if(existingChat !== null && existingChat !== undefined ){
+          return NextResponse.json({
+            success: true,
+            message:"Chat found",
+            data: existingChat,
+        })
+        }
         const newChat = new Chat({
             participants: {
               buddy: buddyId,
@@ -32,13 +49,14 @@ export async function POST(request: NextRequest){
                 message:"Chat created successfully",
                 data: savedChat,
             })
-          } catch (error) {
+          } catch (error:any) {
             console.error('Error creating chat:', error);
+            return NextResponse.json({error:error.message},{status:500});
           }
 
         
     } catch (error:any) {
-        NextResponse.json({error:error.message},{status:500});
+        return NextResponse.json({error:error.message},{status:500});
     }
 
 }
