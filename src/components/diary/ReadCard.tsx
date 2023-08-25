@@ -1,30 +1,41 @@
-import React, { useEffect } from 'react'
+import React, { useEffect } from "react";
 
-const ReadCard = ({setContent}) => {
+const ReadCard = ({ setContent }: { setContent: any }) => {
+  useEffect(() => {
+    //fetch data from card ID
+  }, []);
 
-    useEffect(() => {
-      //fetch data from card ID
-    }, [])
+  function closeCard() {
+    setContent("cards");
+  }
 
-    function closeCard(){
-        setContent("cards");
-    }
+  function openEditor() {
+    setContent("inputBox");
+  }
 
-    function openEditor(){
-        setContent("inputBox");
-    }
-    
   return (
     <div className="w-[94%] m-[3%] h-auto rounded-lg bg-blue-400 flex flex-col  p-4 cursor-pointer drop-shadow-lg">
       <div className="flex flex-row justify-between">
         <div className="text-center font-extrabold ">Heading</div>
-        <div className="w-[40px] h-[40px] bg-blue-950  rounded-full p-1">🙂</div>
-    </div>
-      <div> 
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius illum non, laboriosam eligendi incidunt nemo! Cupiditate, est exercitationem incidunt fugit doloribus esse assumenda recusandae consequuntur voluptas libero, atque alias.lorem
-        Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nihil, exercitationem quod. Ea cumque ipsa explicabo voluptas officia. Aut omnis nisi pariatur, accusamus, sit voluptatem placeat maiores illo odit magni non.
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. In minima dolor sunt natus reprehenderit vitae iure incidunt ut quisquam officia, commodi qui. Deserunt architecto ipsam atque necessitatibus voluptatem voluptas minus?
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsum, soluta architecto, expedita nobis voluptatum beatae tenetur animi provident neque et voluptates. Repudiandae voluptate architecto id dolorum similique adipisci numquam.
+        <div className="w-[40px] h-[40px] bg-blue-950  rounded-full p-1">
+          🙂
+        </div>
+      </div>
+      <div>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Enim eius illum
+        non, laboriosam eligendi incidunt nemo! Cupiditate, est exercitationem
+        incidunt fugit doloribus esse assumenda recusandae consequuntur voluptas
+        libero, atque alias.lorem Lorem, ipsum dolor sit amet consectetur
+        adipisicing elit. Nihil, exercitationem quod. Ea cumque ipsa explicabo
+        voluptas officia. Aut omnis nisi pariatur, accusamus, sit voluptatem
+        placeat maiores illo odit magni non. Lorem ipsum dolor sit amet
+        consectetur adipisicing elit. In minima dolor sunt natus reprehenderit
+        vitae iure incidunt ut quisquam officia, commodi qui. Deserunt
+        architecto ipsam atque necessitatibus voluptatem voluptas minus? Lorem
+        ipsum dolor sit amet consectetur adipisicing elit. Ullam ipsum, soluta
+        architecto, expedita nobis voluptatum beatae tenetur animi provident
+        neque et voluptates. Repudiandae voluptate architecto id dolorum
+        similique adipisci numquam.
       </div>
       <div className="flex flex-row justify-around">
         <button className="p-4 text-blue-950 hover:text-white">
@@ -43,7 +54,10 @@ const ReadCard = ({setContent}) => {
             />
           </svg>
         </button>
-        <button className="p-4 text-blue-950 hover:text-white" onClick={openEditor} >
+        <button
+          className="p-4 text-blue-950 hover:text-white"
+          onClick={openEditor}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -59,7 +73,10 @@ const ReadCard = ({setContent}) => {
             />
           </svg>
         </button>
-        <button className="p-4 text-blue-950 hover:text-white" onClick={closeCard} >
+        <button
+          className="p-4 text-blue-950 hover:text-white"
+          onClick={closeCard}
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             fill="none"
@@ -77,7 +94,7 @@ const ReadCard = ({setContent}) => {
         </button>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default ReadCard
+export default ReadCard;

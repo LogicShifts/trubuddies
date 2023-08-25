@@ -1,6 +1,12 @@
 import React from "react";
 
-const ChatHead = ({ chatName, setToogle }) => {
+const ChatHead = ({
+  chatName,
+  setToogle,
+}: {
+  chatName: any;
+  setToogle: any;
+}) => {
   function changedToogle() {
     console.log("toogled false");
     setToogle(false);
@@ -8,7 +14,9 @@ const ChatHead = ({ chatName, setToogle }) => {
 
   return (
     <div className="w-full h-12 bg-blue-600 flex flex-row justify-between  text-white align-middle pt-2">
-      <button className="mx-8" onClick={changedToogle}  >⬅</button>
+      <button className="mx-8" onClick={changedToogle}>
+        ⬅
+      </button>
       {chatName}
       <div className="w-8 h-8 rounded-full overflow-hidden mx-8">
         <img
