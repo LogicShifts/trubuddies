@@ -44,7 +44,7 @@ export async function POST(request: NextRequest){
           try {
             const savedChat = await newChat.save();
             console.log('Chat created successfully:', savedChat);
-            NextResponse.json({
+            return NextResponse.json({
                 success: true,
                 message:"Chat created successfully",
                 data: savedChat,
