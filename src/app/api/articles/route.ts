@@ -8,12 +8,13 @@ import User from "@/models/userModel";
 
 connect();
 
-export async function GET() {
+export async function GET(request : NextRequest) {
   try {
-      //  const reqBody = await request.json();
-      //  console.log(reqBody);
+    const queryParam  = request.nextUrl.searchParams;
+    const { offset = 0, limit = 50 } = { offset: queryParam.get('offset'), limit: queryParam.get('limit') };
+    const articles = await Article.find().skip(Number(offset)).limit(Number(limit));
+    console.log(offset+" "+limit);
 
-    const articles = await Article.find();
 
     // for (const article of articles) {
     //   const authorId = article.author;
