@@ -4,7 +4,7 @@ import User from "@/models/userModel";
 import UserRole from "@/models/userRoleModel";
 import { NextRequest, NextResponse } from "next/server";
 import BuddyProfile from "@/models/buddyProfileModel";
-//import TruBuddyProfile from "@/models/truBuddyProfileModel";
+import TruBuddyProfile from "@/models/TruBuddyProfileModel";
 import Mood from "@/models/moodModel";
 import DailyMood from "@/models/diaryModel";
 import ToDo from "@/models/todoModel";
@@ -16,7 +16,7 @@ export async function GET(req: NextRequest, res: NextResponse) {
   try {
     await User.find();
     await BuddyProfile.find();
-    //await TruBuddyProfile.find();
+    await TruBuddyProfile.find();
     await UserRole.find();
     await UserRole.find();
     await Mood.find();
