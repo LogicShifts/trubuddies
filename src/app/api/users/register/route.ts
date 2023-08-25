@@ -3,6 +3,7 @@ import User from "@/models/userModel";
 import { NextRequest, NextResponse } from "next/server";
 import bcryptjs from "bcryptjs";
 import { sendEmail } from "@/helpers/mailer";
+import UserRole from "@/models/userRoleModel";
 
 
 connect();
@@ -36,8 +37,9 @@ export async function POST(request: NextRequest) {
    // Calculate the next available unique user ID
    const nextUserId = highestUserId ? highestUserId.userId + 1 : 1000;
 
+   const buddyRole = await UserRole.findOne({roleName: "buddy"});
     //create user
-    const newUser = new User({ userId: nextUserId, email, displayName, password: hashedPassword });
+    const newUser = new User({ userId: nextUserId, email, displayName, password: hashedPassword , role: buddyRole._id});
 
     //saving user in the database
     const savedUser = await newUser.save();

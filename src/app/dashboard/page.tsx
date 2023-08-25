@@ -10,8 +10,9 @@ import FooterSecondary from "@/components/footer/footer2";
 export default function UserProfile({ params }: any) {
   const router = useRouter();
   const [data, setData] = useState(
-    {} as { displayName?: string; email?: string }
+    {} as { displayName?: string; email?: string}
   );
+  const [role, setRole] = useState( {} as { roleName?: string});
   useEffect(() => {
     const authUser = getUserDetails();
 
@@ -36,7 +37,8 @@ export default function UserProfile({ params }: any) {
   const getUserDetails = async () => {
     const res = await axios.get("/api/users/me");
     console.log(res.data.data);
-    setData(res.data.data);
+    setData(res.data.data.user);
+    setRole(res.data.data.role)
   };
 
   return (
@@ -120,9 +122,9 @@ export default function UserProfile({ params }: any) {
                 </div>
                 <p className="text-sky-600 text-xs">{data?.email}</p>
                 <h1 className="text-xl text-sky-500 font-bold mt-4">
-                  {data?.displayName}
+                  Role
                 </h1>
-                <p className="text-sky-600 text-xs">{data?.email}</p>
+                <p className="text-sky-600 text-xs">{role.roleName}</p>
                 <h1 className="text-xl text-sky-500 font-bold mt-4">
                   {data?.displayName}
                 </h1>
