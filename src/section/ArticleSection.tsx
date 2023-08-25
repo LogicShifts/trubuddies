@@ -64,7 +64,7 @@ export default function ArticleSection({
           <h1 className="mb-4 text-blue-600 text-center">
             Learn & Get Inspired
           </h1>
-          <div className="min-h-[50%]">
+          <div className="min-h-[50%]  ">
             {loading ? (
               <div className="flex items-center justify-center ">
                 <h3>Loading...</h3>
