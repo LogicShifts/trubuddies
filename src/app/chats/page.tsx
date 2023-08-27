@@ -1,4 +1,4 @@
-"use client"
+"use client";
 
 import Image from "next/image";
 import Header from "@/components/navbar";
@@ -6,17 +6,11 @@ import ChatNameBox from "@/components/chat/ChatNameBox";
 import ChatSection from "@/components/chat/ChatSection";
 import { useEffect, useState } from "react";
 
-
-
-
-
 export default function ChatPage() {
+  const [isMobile, setIsMobile] = useState(true);
+  const [toogle, setToogle] = useState(false);
 
-  const [isMobile,setIsMobile] = useState(true);
-  const [toogle,setToogle]=useState(false);
-
-
-  const [name,setName] = useState("")
+  const [name, setName] = useState("");
 
   // const handleResize = () => {
   //   setIsMobile(window.innerWidth<768);
@@ -44,29 +38,28 @@ export default function ChatPage() {
   //   };
   // }, [isMobile]);
 
-  if( isMobile ){
+  if (isMobile) {
     return (
       <main>
-        <Header />   
-        <div className="absolute h-[86%] w-screen mt-20 flex flex-row">
-            {
-              toogle ?
-              <ChatSection chatName={name}   setToogle={setToogle}/>
-              :
-              <ChatNameBox setName={setName} setToogle={setToogle}  />
-            }
+        <Header />
+        <div className="absolute h-[86%] w-screen mt-0 flex flex-row">
+          {toogle ? (
+            <ChatSection chatName={name} setToogle={setToogle} />
+          ) : (
+            <ChatNameBox setName={setName} setToogle={setToogle} />
+          )}
         </div>
       </main>
-  );
-  }else{
+    );
+  } else {
     return (
       <main>
-      <Header /> 
-      <div className="absolute h-[86%] w-screen mt-20 flex flex-row">
-        <ChatNameBox setName={setName} setToogle={setToogle}  />
-        <ChatSection chatName={name}   setToogle={setToogle}/>
-      </div>
+        <Header />
+        <div className="absolute h-[86%] w-screen mt-20 flex flex-row">
+          <ChatNameBox setName={setName} setToogle={setToogle} />
+          <ChatSection chatName={name} setToogle={setToogle} />
+        </div>
       </main>
     );
-  };
+  }
 }

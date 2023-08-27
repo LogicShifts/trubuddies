@@ -34,7 +34,6 @@ const Article = ({
                                     {line.length > 30 ? line.slice(0, 30)+"...." : line}
                                     
                                 </div> 
-
                             ))}
 
                         </div>*/}
