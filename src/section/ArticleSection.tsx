@@ -9,8 +9,8 @@ import { useState, useEffect } from "react";
 export default function ArticleSection({
   articles,  setArticles, fetchedAll, setFetchedAll, limitArticles
 }: {
-    articles: Array<{ _id: string; title: string; description: string }>;
-    setArticles: React.Dispatch<React.SetStateAction<Array<{ _id: string; title: string; description: string }>>>;
+      articles: Array<{ _id: string; title: string; description: string; tags:any; publishedOn:Date  ;author: string}>;
+    setArticles: React.Dispatch<React.SetStateAction<Array<{ _id: string; title: string; description: string; tags:any; publishedOn:Date;  author: string }>>>;
     fetchedAll: boolean;
     setFetchedAll: React.Dispatch<React.SetStateAction<boolean>>;
     limitArticles: number; // Add the type definition for setFetchedAll prop
@@ -77,6 +77,10 @@ export default function ArticleSection({
                     key={article._id}
                     title={article.title}
                     description={article.description}
+                    tags ={article.tags}
+                    publishedOn={article.publishedOn}
+                    author={article.author}
+
                   />
                 ))
             )}
