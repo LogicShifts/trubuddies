@@ -24,9 +24,10 @@ export async function GET(request: NextRequest) {
 
     if(chats.length === 0){
         return NextResponse.json({
-            success: false,
-            message: "No chats found",
-        }, {status: 404});
+            success: true,
+            message: "0 Chats found",
+            data: chats,
+        });
     }
 
     return NextResponse.json({
