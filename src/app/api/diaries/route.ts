@@ -15,7 +15,7 @@ export async function GET(request: NextRequest) {
 
     // Get all diary entries of the user
 
-    const diaryEntries = await Diary.find({ userId: userId });
+    const diaryEntries = await Diary.find({ userId: userId }).exec();
 
     if(diaryEntries.length === 0){
         return NextResponse.json({
