@@ -4,7 +4,7 @@ import User from "@/models/userModel";
 import UserRole from "@/models/userRoleModel";
 import { NextRequest, NextResponse } from "next/server";
 import BuddyProfile from "@/models/buddyProfileModel";
-import TruBuddyProfile from "@/models/truBuddyProfileModel";
+import TruBuddyProfile from "@/models/TruBuddyProfileModels";
 import Mood from "@/models/moodModel";
 import DailyMood from "@/models/diaryModel";
 import ToDo from "@/models/todoModel";
