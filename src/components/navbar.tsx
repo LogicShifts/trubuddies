@@ -3,7 +3,7 @@ import React, { useState } from "react";
 export default function Header() {
   const [isNavOpen, setIsNavOpen] = useState(false);
   return (
-    <div className="flex items-center justify-between border-b border-gray-400 p-8 sticky top-0 z-40 bg-slate-50">
+    <div className="flex items-center justify-between border-b border-gray-400 p-6 sticky top-0 z-40 bg-slate-50">
       <a href="/" className="ml-1/5 text-sky-500 text-2xl">
         TruBuddies
         {/* <img src="https://designbygio.it/images/logo.png" alt="logo" /> */}
