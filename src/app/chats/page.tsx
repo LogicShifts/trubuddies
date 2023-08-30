@@ -5,6 +5,7 @@ import Header from "@/components/navbar";
 import ChatNameBox from "@/components/chat/ChatNameBox";
 import ChatSection from "@/components/chat/ChatSection";
 import { useEffect, useState } from "react";
+import axios from "axios";
 
 export default function ChatPage() {
   const [isMobile, setIsMobile] = useState(true);
@@ -12,11 +13,34 @@ export default function ChatPage() {
 
   const [name, setName] = useState("");
 
+  const [userChats, setUserChats] = useState( [] as Array<any>);
+
+  useEffect(() => {
+    const fetchUserChats = async () => {
+      const chats = await fetchChats();
+      setUserChats(chats);
+    };
+  
+    fetchUserChats();
+  }, []);
+
+
+  const fetchChats = async() => {
+    try {
+      const response = await axios.get('/api/chats');
+      console.log(response.data);
+      return response.data.data;
+    } catch (error) {
+      console.error(error);
+    }
+  }
+
   // const handleResize = () => {
   //   setIsMobile(window.innerWidth<768);
   //   console.log(isMobile)
   // };
   useEffect(() => {
+   
     const handleResize = () => {
       setIsMobile(window.innerWidth < 768);
     };
@@ -46,7 +70,7 @@ export default function ChatPage() {
           {toogle ? (
             <ChatSection chatName={name} setToogle={setToogle} />
           ) : (
-            <ChatNameBox setName={setName} setToogle={setToogle} />
+            <ChatNameBox userChats={userChats} setName={setName} setToogle={setToogle} />
           )}
         </div>
       </main>
@@ -56,7 +80,7 @@ export default function ChatPage() {
       <main>
         <Header />
         <div className="absolute h-[86%] w-screen mt-20 flex flex-row">
-          <ChatNameBox setName={setName} setToogle={setToogle} />
+          <ChatNameBox userChats={userChats} setName={setName} setToogle={setToogle} />
           <ChatSection chatName={name} setToogle={setToogle} />
         </div>
       </main>
