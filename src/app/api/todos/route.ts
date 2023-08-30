@@ -13,9 +13,16 @@ export async function GET(request: NextRequest) {
     const user = await User.findOne({ _id: userId }).select("-password");
     const role = await UserRole.findOne({_id: user.role});
 
-    // Getting all the todos of the user
-    const todos = await Todo.find({ userId : userId }).exec();
+    //const {dueDate} = await request.json();
 
+    const queryParam  = request.nextUrl.searchParams;
+    const { dueDate = null } = { dueDate: queryParam.get('dueDate') };
+
+    // Getting all the todos of the user
+   
+    const todos =dueDate ?
+     await Todo.find({ userId : userId, dueDate: new Date(dueDate) }).exec()
+    : await Todo.find({ userId : userId }).exec();
     if(todos.length === 0){
         return NextResponse.json({
             success: false,
