@@ -10,7 +10,7 @@ export async function POST(request: NextRequest) {
     try {
       const reqBody = await request.json();
       const { token, newPassword } = reqBody;
-      console.log(token);
+      console.log(request.nextUrl.host);
   
       const user = await User.findOne({
         forgotPasswordToken: token,

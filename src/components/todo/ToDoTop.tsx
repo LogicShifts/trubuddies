@@ -11,7 +11,7 @@ const ToDoTop = ({date}:{date:any}) => {
     const [enterTodo, setenterTodo] = useState('');
     const [todos,settodos] = useState<any[]>([]);
 
-    function searchTodo(e){
+    function searchTodo(e: { target: { value: React.SetStateAction<string>; }; }){
         setsearch(e.target.value)
     }
 

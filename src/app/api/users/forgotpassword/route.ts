@@ -8,27 +8,25 @@ connect();
 export async function POST(request: NextRequest) {
   try {
     const reqBody = await request.json();
+
     //const { token } = reqBody;
     const { email } = reqBody;
-    console.log(email);
+    console.log(request.nextUrl.host);
 
     const user = await User.findOne({
-        email: email,
+      email: email,
     });
 
-
     if (!user) {
-        return NextResponse.json({ error: "User does not exists!" }, { status: 400 });
-      }
-      console.log("Forgot pass user: " + user);
+      return NextResponse.json(
+        { error: "User does not exists!" },
+        { status: 400 }
+      );
+    }
+    console.log("Forgot pass user: " + user);
 
-
-     //send verification email
-     await sendEmail({ email, emailType: "RESET", id: user._id });
-
-
-
-   
+    //send verification email
+    await sendEmail({ email, emailType: "RESET", id: user._id, host: request.nextUrl.host });
 
     // //
     // user.isVerified = true;
@@ -38,11 +36,12 @@ export async function POST(request: NextRequest) {
     // await user.save();
 
     return NextResponse.json({
-      message: "Sent password reset email successfully! Please Check your email!",
+      message:
+        "Sent password reset email successfully! Please Check your email!",
       success: true,
     });
   } catch (error: any) {
-    console.log(error.message)
+    console.log(error.message);
     return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
