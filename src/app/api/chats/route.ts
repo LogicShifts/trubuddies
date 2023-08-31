@@ -20,20 +20,46 @@ export async function GET(request: NextRequest) {
             { "participants.buddy": userId },
             { "participants.truBuddy": userId }
         ]
-    }).exec();
+    }).select('-messages').exec();
+
+    // Create a new array to store the modified chat data
+    const modifiedChats = [];
+
+     // Loop through each chat
+     for (let chat of chats) {
+        // Find the user with which the current user is chatting with
+        const otherUserId = chat.participants.buddy.toString() === userId.toString() ? chat.participants.truBuddy : chat.participants.buddy;
+        const otherUser = await User.findById(otherUserId).select('displayName').exec();
+  
+        // Add the other user's userId and displayName to the chat data
+        const chatWithOtherUser = {
+          ...chat._doc,
+          otherUser: {
+            userId: otherUser._id,
+            displayName: otherUser.displayName
+          },
+          requestingUser: {
+            userId: user._id,
+            displayName: user.displayName
+          }
+        };
+  
+        // Add the modified chat data to the new array
+        modifiedChats.push(chatWithOtherUser);
+      }
 
     if(chats.length === 0){
         return NextResponse.json({
             success: true,
             message: "0 Chats found",
-            data: chats,
+            data: modifiedChats,
         });
     }
 
     return NextResponse.json({
         success: true,
         message: "Chats found",
-        data: chats,
+        data: modifiedChats,
     });
 
 
