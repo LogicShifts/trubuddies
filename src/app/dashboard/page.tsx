@@ -24,9 +24,9 @@ export default function UserProfile({ params }: any) {
   }, []);
   const logout = async () => {
     try {
-      await axios.get("/api/users/logout");
+      const res = await axios.get("/api/users/logout");
       toast.success("Logged out Successfully");
-
+      console.log(res);
       router.push("/login");
     } catch (error: any) {
       console.log(error.message);
