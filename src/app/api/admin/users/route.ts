@@ -60,18 +60,18 @@ export async function PUT(request: NextRequest) {
       );
     }
     
-    const { updateUserId, isActive } = await request.json();
+    const { updateUserId, data } = await request.json();
     //console.log(await request.json())
     // const router = useRouter();
     // const { userId } = router.query;
     //const chatId = request.nextUrl.pathname.split("/").pop(); // Get the chat ID from the URL
-   // console.log(delUserId)
+    console.log(data)
 
     const updateUser = await User.findOne({ _id: updateUserId }).select("-password");
     //console.log(deactUserId)
     //console.log(updateUser.role?updateUser.role:'gfg')
     const updateUserRole =updateUser.role? await UserRole.findOne({ _id: updateUser.role }): 'empty';
-    console.log(updateUserRole)
+    //console.log(updateUserRole)
    // Check if the user is an admin
 if (updateUserRole && updateUserRole.roleName && updateUserRole.roleName.toLowerCase() === "admin") {
     return NextResponse.json(
@@ -82,8 +82,16 @@ if (updateUserRole && updateUserRole.roleName && updateUserRole.roleName.toLower
       { status: 403 }
     );
   }
-  
-  await User.findByIdAndUpdate(updateUserId, { isActive: isActive });
+ // console.log(data.isActive)
+  const updateFields: any = {};
+if (data.isActive !== undefined) {
+updateFields.isActive = data.isActive;
+}
+if (data.role && data.role._id !== undefined) {
+updateFields.role = data.role._id;
+}
+await User.findByIdAndUpdate(updateUserId, updateFields);
+  //await User.findByIdAndUpdate(updateUserId, { isActive: data.isActive, role:data.role._id });
   
   return NextResponse.json({
     success: true,

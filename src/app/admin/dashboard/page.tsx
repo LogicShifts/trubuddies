@@ -13,6 +13,7 @@ const Dashboard = () => {
   //     }[]
   //   >([]);
   const [users, setUsers] = useState([] as any[]);
+  const [roles, setRoles] = useState([] as any[]);
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -27,39 +28,35 @@ const Dashboard = () => {
     fetchUsers();
   }, []);
 
-  const deactivateUser = async (deactUserId: any) => {
+  useEffect(() => {
+    const fetchRoles = async () => {
+      try {
+        const response = await axios.get("/api/admin/users/roles"); // replace with your API endpoint
+        setRoles(response.data.data);
+      } catch (error) {
+        console.error("Failed to fetch roles:", error);
+      }
+    };
+
+    fetchRoles();
+  }, []);
+
+  const updateUser = async (userId: any, data: any) => {
     try {
-      // console.log(deactUserId)
+      console.log(data);
       await axios.put("/api/admin/users", {
-        updateUserId: deactUserId,
-        isActive: false,
+        updateUserId: userId,
+        data,
       });
-      setUsers(
-        users.map((user) =>
-          user._id === deactUserId ? { ...user, isActive: false } : user
+      setUsers((prevUsers) =>
+        prevUsers.map((user) =>
+          user._id === userId ? { ...user, ...data } : user
         )
       );
     } catch (error) {
-      console.error("Failed to deactivate user:", error);
+      console.error("Failed to update user:", error);
     }
   };
-
-  const reactivateUser = async (reactUserId: any) => {
-    try {
-      await axios.put("/api/admin/users", {
-        updateUserId: reactUserId,
-        isActive: true,
-      });
-      setUsers(
-        users.map((user) =>
-          user._id === reactUserId ? { ...user, isActive: true } : user
-        )
-      );
-    } catch (error) {
-      console.error("Failed to reactivate user:", error);
-    }
-  };
-
   return (
     <div className="p-6">
       <header className="mb-4">
@@ -86,21 +83,47 @@ const Dashboard = () => {
               <p className="mt-1 text-gray-500">
                 Status: {user.isActive ? "Active" : "Inactive"}
               </p>
-              {user.isActive ? (
-                <button
-                  onClick={() => deactivateUser(user._id)}
-                  className="bg-red-500 hover:bg-red-600 text-white font-bold py-2 px-4 rounded mt-2"
+              <div className="flex items-center mt-2">
+                <select
+                  value={user.role}
+                  onChange={(event) => {
+                    const selectedRole = event.target.value;
+                    setUsers((prevUsers) =>
+                      prevUsers.map((prevUser) =>
+                        prevUser._id === user._id
+                          ? { ...prevUser, role: { _id: selectedRole,roleName: roles.find(role => role._id === selectedRole)?.roleName  } }
+                          : prevUser
+                      )
+                    );
+                  }}
+                  className="mr-2 px-2 py-1 border rounded"
                 >
-                  Deactivate Account
-                </button>
-              ) : (
+                  <option value="">Select Role</option>
+                  {roles.map((role) => (
+                    <option key={role._id} value={role._id}>
+                      {role.roleName}
+                    </option>
+                  ))}
+                </select>
                 <button
-                  onClick={() => reactivateUser(user._id)}
-                  className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded mt-2"
+                  onClick={() => updateUser(user._id, { role: user.role })}
+                  className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded"
                 >
-                  Reactivate Account
+                  Confirm
                 </button>
-              )}
+              </div>
+              <button
+                onClick={() =>
+                  updateUser(user._id, { isActive: !user.isActive })
+                }
+                className={`ml-2 bg-${
+                  user.isActive ? "red" : "green"
+                }-500 hover:bg-${
+                  user.isActive ? "red" : "green"
+                }-600 text-white font-bold py-2 px-4 rounded`}
+              >
+                {user.isActive ? "Deactivate Account" : "Reactivate Account"}
+              </button>
             </div>
           ))}
         </section>
