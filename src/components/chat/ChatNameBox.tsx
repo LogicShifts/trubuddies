@@ -20,7 +20,7 @@ const ChatNameBox = ({
 
 {
   userChats.map((chat) => (
-    <ChatName  key={chat._id} person={chat.participants.truBuddy} setName={setName} setToogle={setToogle} />
+    <ChatName  key={chat._id} person={chat.otherUser.displayName} setName={setName} setToogle={setToogle} />
   ))
 }
 
