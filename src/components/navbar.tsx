@@ -41,20 +41,23 @@ export default function Header() {
               <li className="border-b border-gray-400 my-8 uppercase">
                 <a href="/">Home</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-gray-400 my-4 uppercase">
                 <a href="/About">About</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-gray-400 my-4 uppercase">
                 <a href="/contact">Contact</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-gray-400 my-4 uppercase">
                 <a href="/chats">Chat</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-gray-400 my-4 uppercase">
                 <a href="/diary">Diary</a>
               </li>
-              <li className="border-b border-gray-400 my-8 uppercase">
+              <li className="border-b border-gray-400 my-4 uppercase">
                 <a href="/articles">Article</a>
+              </li>
+              <li className="border-b border-gray-400 my-4 uppercase">
+                <a href="/todo">ToDo</a>
               </li>
             </ul>
           </div>
