@@ -14,6 +14,7 @@ const chatSchema = new mongoose.Schema({
     buddy: { type: mongoose.Schema.Types.ObjectId, required: true },
     truBuddy: { type: mongoose.Schema.Types.ObjectId, required: true }
   },
+  isActive: { type: Boolean, default: true },
   createdAt: { type: Date, default: Date.now },
   updatedAt: { type: Date, default: Date.now },
   messages: { type: [messageSchema] }
