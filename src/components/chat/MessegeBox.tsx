@@ -12,7 +12,7 @@ const MessegeBox = () => {
     }
   };
   return (
-    <div className="h-[10%] bg-blue-100 flex flex-row justify-center">
+    <div className="h-[10%]  p-1 flex flex-row justify-center">
       <input
         type="text"
         value={message}
@@ -22,8 +22,10 @@ const MessegeBox = () => {
       />
       <button
         onClick={handleSendMessage}
-        className="ml-4 bg-blue-500 text-white rounded-full px-4 py-2 hover:bg-blue-600 focus:outline-none  focus:ring-2 focus:ring-blue-500"
-      >▶ </button>
+        className=" bg-blue-500 text-white rounded-full p-2 m-1 hover:bg-blue-600 focus:outline-none  focus:ring-2 focus:ring-blue-500"
+      >
+        ▶{" "}
+      </button>
     </div>
   );
 };
