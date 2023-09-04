@@ -4,6 +4,7 @@ import { connect } from "@/DBconfig/dbConfig";
 import { getDataFromToken } from "@/helpers/getDataFromToken";
 import mongoose from "mongoose";
 import User from "@/models/userModel";
+import Message from "@/models/messageModel";
 
 connect();
 
@@ -33,19 +34,33 @@ export async function POST(request: NextRequest) {
 
         // Create a new message
         const { content } = await request.json();
-        const message = {
-            _id: new mongoose.Types.ObjectId(),
-            senderId: userId,
-            content,
-            timestamp: new Date(),
-        };
-        chat.messages.push(message);
-        await chat.save();
+        // const message = {
+        //     _id: new mongoose.Types.ObjectId(),
+        //     senderId: userId,
+        //     content,
+        //     timestamp: new Date(),
+        // };
+        // chat.messages.push(message);
+        // await chat.save();
+
+         // Create a new message object
+    const newMessage = new Message({
+      senderId: userId,
+      chatId: chatId,
+      content: content,
+      timestamp: new Date(),
+    });
+
+    // Add the new message to the group chat
+   // groupChat.messages.push(newMessage);
+
+    // Save the message
+    await newMessage.save();
 
         return NextResponse.json({
             success: true,
             message: "Message sent",
-            data: message,
+            data: newMessage,
         });
 
     } catch (error: any) {
@@ -88,6 +103,9 @@ export async function GET(request: NextRequest) {
           { status: 403 }
         );
       }
+
+      const chats = await Message.find({chatId: chat._id});
+
   
       // Find the user with which the current user is chatting with
       const otherUserId =
@@ -100,7 +118,8 @@ export async function GET(request: NextRequest) {
   
       // Add the other user's userId and displayName to the returned chat data
       const chatWithOtherUser = {
-        ...chat._doc,
+        //...chat._doc,
+        messages: chats,
         otherUser: {
           userId: otherUser._id,
           displayName: otherUser.displayName,
