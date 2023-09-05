@@ -114,7 +114,7 @@ export async function POST(request: NextRequest) {
 
     if (existingChat !== null && existingChat !== undefined) {
       return NextResponse.json({
-        success: false,
+        success: true,
         message: "Chat already exists",
         data: existingChat,
       });
