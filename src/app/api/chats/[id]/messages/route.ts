@@ -117,7 +117,7 @@ export async function GET(request: NextRequest) {
         .select("displayName")
         .exec();
 
-        const messages = await Message.find({chatId: chat._id});
+       
   
       // Add the other user's userId and displayName to the returned chat data
       const chatWithOtherUser = {
@@ -131,7 +131,6 @@ export async function GET(request: NextRequest) {
             userId: user._id,
             displayName: user.displayName
           },
-        messages:messages,
       };
 
 
