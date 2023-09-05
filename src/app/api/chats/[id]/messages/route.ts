@@ -103,6 +103,9 @@ export async function GET(request: NextRequest) {
           { status: 403 }
         );
       }
+
+      const chats = await Message.find({chatId: chat._id});
+
   
       // Find the user with which the current user is chatting with
       const otherUserId =
@@ -118,7 +121,8 @@ export async function GET(request: NextRequest) {
   
       // Add the other user's userId and displayName to the returned chat data
       const chatWithOtherUser = {
-        ...chat._doc,
+        //...chat._doc,
+        messages: chats,
         otherUser: {
           userId: otherUser._id,
           displayName: otherUser.displayName,
