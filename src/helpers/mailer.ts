@@ -45,9 +45,11 @@ export const sendEmail = async ({ email, emailType, id, host }: any) => {
       to: email,
       subject:
         emailType === "VERIFY" ? "verify your email" : "reset your password",
-      html: `<div><p>Click <a href=https://google.com>here</a> to ${
+      html: `<div><p>Click <a href=${host.includes("localhost")?"http":"https"}://${host}/${
+        emailType === "VERIFY" ? "verifyemail" : "resetpassword"
+      }?token=${hashedToken}>here</a> to ${
         emailType === "VERIFY" ? "verify your email" : "reset your password"
-      }</p><p>Or copy paste this url to your browser:</p><p>${host}/${
+      }</p><p>Or copy paste this url to your browser:</p><p>${host.includes("localhost")?"http":"https"}://${host}/${
         emailType === "VERIFY" ? "verifyemail" : "resetpassword"
       }?token=${hashedToken}</p></div>`,
     };
