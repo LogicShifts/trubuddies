@@ -32,9 +32,9 @@ export async function POST(request: NextRequest) {
             }, {status: 403});
         }
 
-       
+        const {isActive} = await request.json();       
      // Set the isActive status of the chat to false
-    chat.isActive = false;
+    chat.isActive = isActive;
     await chat.save();
 
     return NextResponse.json({
