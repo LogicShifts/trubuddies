@@ -4,12 +4,16 @@ import Image from "next/image";
 import Header from "@/components/navbar";
 import ChatNameBox from "@/components/chat/ChatNameBox";
 import ChatSection from "@/components/chat/ChatSection";
+import AddBuddy from "@/components/chat/AddBuddy";
+
 import { useEffect, useState } from "react";
 import axios from "axios";
+
 
 export default function ChatPage() {
   const [isMobile, setIsMobile] = useState(true);
   const [toogle, setToogle] = useState(false);
+  const [addBuddy, setaddBuddy] = useState(false)
 
   const [name, setName] = useState("");
 
@@ -64,6 +68,9 @@ export default function ChatPage() {
     return (
       <main>
         <Header />
+        {addBuddy?
+         <AddBuddy  setaddBuddy={setaddBuddy}/>
+        :
         <div className="absolute h-[86%] w-screen mt-0 flex flex-row">
           {toogle ? (
             <ChatSection chatName={name} setToogle={setToogle} />
@@ -72,23 +79,35 @@ export default function ChatPage() {
               userChats={userChats}
               setName={setName}
               setToogle={setToogle}
+              setaddBuddy={setaddBuddy}
             />
           )}
-        </div>
+        </div>      
+        }
+
+       
       </main>
     );
   } else {
     return (
       <main>
         <Header />
+        {
+          addBuddy?
+
+          <AddBuddy  setaddBuddy={setaddBuddy}/>
+        :
         <div className="absolute h-[87%] w-screen mt-0 mr-2 flex flex-row">
           <ChatNameBox
             userChats={userChats}
             setName={setName}
             setToogle={setToogle}
+            setaddBuddy={setaddBuddy}
           />
           <ChatSection chatName={name} setToogle={setToogle} />
         </div>
+        }
+        
       </main>
     );
   }
